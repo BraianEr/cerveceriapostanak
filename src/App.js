@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Beer from "./components/Beer";
 
 function App() {
+  const beer = {
+    name: "Honey",
+    ibu: 5,
+  };
+  console.log({ beer });
+
+  const beer2 = { ...beer, name: "Stout", ibu: "6"};
+
+  console.log({ beer2 });
+
+  const beers = [
+    { name: "Honey", ibu: 5, },
+    { name: "Stout", ibu: 6 },
+    { name: "Scotish", ibu: 7 },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Cervezas Postanak</h1>
+        <hr/>
+      {beers.map((beer) => (
+        <>
+          
+          <Beer key={beer.name} {...beer} />
+          <hr />
+        </>
+      ))}
     </div>
   );
 }
